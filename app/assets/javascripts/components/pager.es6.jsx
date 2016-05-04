@@ -10,7 +10,7 @@ class Pager extends React.Component {
 
   render () {
     if (this.props.hasNextPage) {
-      reutrn (
+      return (
         <form className="pager">
           <button
             type="submit"
