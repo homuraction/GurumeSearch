@@ -36,7 +36,7 @@ $ cd GurumeSearch
 
 $ bundle install
 
-$ bundle exec rails s -p <PORT番号> -b <IP番号> # localhostで起動する場合は-bオプション及びIP番号を消してください
+$ GURUNAVI_API_KEY=<ぐるなびAPIに登録後送信されたAPIキーを入力する> bundle exec rails s -p <PORT番号> -b <IP番号> # localhostで起動する場合は-bオプション及びIP番号を消してください
 ```
 
 以上でアプリケーションが起動するので`http://<IP番号>:<PORT番号>`にアクセスすると
