@@ -4,6 +4,8 @@ class RestaurantItem extends React.Component {
 
     // 詳細表示のON/OFFを示す
     this.state = { open: false };
+
+    console.log(props);
   }
 
   handleClick (e) {
@@ -46,7 +48,7 @@ class RestaurantItem extends React.Component {
   createBudget () {
     if (this.props.budget.length !== 0) {
       return (
-        <p className="note">{this.props.budget}</p>
+        <p className="note">平均予算: {this.props.budget}円</p>
       );
     }
 
@@ -94,7 +96,7 @@ class RestaurantItem extends React.Component {
 
     return (
       <a href={url} key={key} target="_blank">
-        <img src={url} alt={this.props.name} />
+        <img src={url} alt={this.props.name} className="img-responsive" />
       </a>
     );
   }
@@ -118,7 +120,7 @@ class RestaurantItem extends React.Component {
       return (
         <div>
           <p><b>{this.props.name}</b></p>
-          <p className="note">{this.props.name_kana.length}</p>
+          <p className="note">{this.props.name_kana}</p>
         </div>
       );
     }
@@ -154,7 +156,7 @@ class RestaurantItem extends React.Component {
 
   createThumbnail () {
     if (Object.keys(this.props.imgUrls[0]).length !== 0) {
-      return this.createImage(imgUrls[0],0);
+      return this.createImage(this.props.imgUrls[0],0);
     }
     else
       return '';
@@ -173,7 +175,7 @@ class RestaurantItem extends React.Component {
     return (
       <div
         className="restaurant-item"
-        key={this.props.key}
+        key={this.props.id}
         onClick={this.handleClick.bind(this)}
       >
         {this.createCategory()}
@@ -192,7 +194,9 @@ class RestaurantItem extends React.Component {
         {this.createAddress()}
         {this.createTel()}
         {this.createCoupon()}
-        {this.createImages()}
+        <div className="row">
+          {this.createImages()}
+        </div>
       </div>
     );
   }
@@ -201,7 +205,7 @@ class RestaurantItem extends React.Component {
     return (
       <div
         className="restaurant-item"
-        key={this.props.key}
+        key={this.props.id}
         onClick={this.handleClick.bind(this)}
       >
         {this.createCategory()}
@@ -226,20 +230,20 @@ class RestaurantItem extends React.Component {
     else
       return this.createItem();
   }
-
-  RestaurantItem.propTypes = {
-    access:    React.PropTypes.object,
-    address:   React.PropTypes.string,
-    budget:    React.PropTypes.budget,
-    category:  React.PropTypes.string,
-    coupon:    React.PropTypes.object,
-    imgUrls:   React.PropTypes.arrayOf(React.PropTypes.string),
-    key:       React.PropTypes.string,
-    latitude:  React.PropTypes.string,
-    longitude: React.PropTypes.string,
-    name:      React.PropTypes.string,
-    name_kana: React.PropTypes.string,
-    opentime:  React.PropTypes.string,
-    tel:       React.PropTypes.string,
-  };
 }
+
+RestaurantItem.propTypes = {
+  access:    React.PropTypes.object,
+  address:   React.PropTypes.string,
+  budget:    React.PropTypes.string,
+  category:  React.PropTypes.string,
+  coupon:    React.PropTypes.object,
+  imgUrls:   React.PropTypes.arrayOf(React.PropTypes.string),
+  id:        React.PropTypes.string,
+  latitude:  React.PropTypes.string,
+  longitude: React.PropTypes.string,
+  name:      React.PropTypes.string,
+  name_kana: React.PropTypes.string,
+  opentime:  React.PropTypes.string,
+  tel:       React.PropTypes.string,
+};
