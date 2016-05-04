@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'restaurants#index'
   namespace :api, format: 'json' do
     namespace :v1, format: 'json' do
       resources :restaurants, only: [:index]
