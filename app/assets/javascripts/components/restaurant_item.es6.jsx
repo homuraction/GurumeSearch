@@ -4,8 +4,6 @@ class RestaurantItem extends React.Component {
 
     // 詳細表示のON/OFFを示す
     this.state = { open: false };
-
-    console.log(props);
   }
 
   handleClick (e) {
@@ -115,6 +113,23 @@ class RestaurantItem extends React.Component {
     });
   }
 
+  createMap () {
+    if (this.props.latitude.length !== 0 && this.props.longitude.length !== 0) {
+      let mapUrl = "http://maps.apple.com/?q=" + this.props.latitude + "," +
+                     this.props.longitude;
+      return (
+        <div>
+          <label>地図</label>
+          <p>
+            <a href={mapUrl} target="_blank">地図はこちら</a>
+          </p>
+        </div>
+      );
+    }
+
+    return '';
+  }
+
   createName () {
     if (this.props.name.length !== 0) {
       return (
@@ -193,6 +208,7 @@ class RestaurantItem extends React.Component {
         <hr />
         {this.createAddress()}
         {this.createTel()}
+        {this.createMap()}
         {this.createCoupon()}
         <div className="row">
           {this.createImages()}

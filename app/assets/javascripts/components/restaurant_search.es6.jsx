@@ -178,7 +178,9 @@ class RestaurantSearch extends React.Component {
 
     return (
       <div class="restaurants-search">
-        {items}
+        <div className="restaurants-box">
+          {items}
+        </div>
         <Pager
           hasNextPage={this.state.hasNextPage}
           onSubmit={this.readNextPage.bind(this)}

@@ -28,6 +28,7 @@ class SearchBox extends React.Component {
             <div className="col-xs-6">
               <select
                 className="selectpicker"
+                data-width="fit"
                 onChange={this.handleSelect.bind(this)}
               >
                 {selectOptions}
@@ -36,7 +37,7 @@ class SearchBox extends React.Component {
             <div className="col-xs-6">
               <button
                 type="submit"
-                className="btn btn-default btn-lg navbar-btn"
+                className="btn btn-default navbar-btn"
                 onClick={this.handleSubmit.bind(this)}
               >
                 <span className="glyphicon glyphicon-search" aria-hidden="true">
